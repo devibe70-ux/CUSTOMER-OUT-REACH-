@@ -24,100 +24,101 @@ import {
   Award,
   CreditCard,
   Eye,
-  Sparkle,
   Building,
   Shield,
-  Star
+  Star,
+  Sparkle,
+  HelpCircle
 } from 'lucide-react';
 
-// --- DATA ARCHETYPES ---
+// --- DATA ARCHETYPES (Plain-English Layman Language) ---
 const UX_ARCHETYPES = [
   {
     id: 'single-page',
-    title: 'Single-Page Conversion Funnel',
-    subtitle: 'Best for product launches, lead magnets, & single services',
-    goalMatch: 'Lead Generation',
-    basePages: '1-3 Pages',
+    title: '1-Page Quick Sales & Lead Page',
+    subtitle: 'Best for single product launches, quick offers, & instant customer lead generation',
+    goalMatch: 'Get More Customer Leads & Enquiries',
+    basePages: '1 Page Scope',
     wireframe: [
-      { name: 'Sticky Header + CTA', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Hero (Headline + Video/Image + Form)', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
-      { name: 'Trust Logos & Social Proof Bar', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
-      { name: '3-Column Value Proposition Grid', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Testimonials & Case Highlights', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
-      { name: 'Interactive Pricing / Lead Capture Form', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' },
-      { name: 'Minimal Legal Footer', color: 'bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-500' }
+      { name: 'Top Header Navigation + Call Us Button', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Main Headline + Hero Image/Video + Lead Enquiry Form', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
+      { name: 'Trust Logos & Happy Client Proof Bar', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
+      { name: '3-Column Business Benefits & Feature Cards', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Customer Testimonials & Case Reviews', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
+      { name: 'Pricing Packages / Instant Contact Form', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' },
+      { name: 'Footer Links & Legal Info', color: 'bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-500' }
     ]
   },
   {
     id: 'corporate-hub',
-    title: 'Multi-Page Corporate & B2B Hub',
-    subtitle: 'Best for established businesses, agencies, & consulting firms',
-    goalMatch: 'Corporate Presence',
+    title: 'Complete Business Website (About, Services, Contact)',
+    subtitle: 'Best for established companies, agencies, & professional service firms',
+    goalMatch: 'Professional Business & Corporate Presence',
     basePages: '5-10 Pages',
     wireframe: [
-      { name: 'Global Megamenu Navigation + Search', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Hero Value Prop + Client Metrics', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
-      { name: 'Core Services Interactive Grid', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Case Studies / Client Portfolio Showcase', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
-      { name: 'Leadership & Culture Spotlight', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
-      { name: 'Consultation Booking / Request Quote Hub', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' },
-      { name: 'Expanded Site Map Footer + Compliance', color: 'bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-500' }
+      { name: 'Main Navigation Menu + Search Bar', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Company Welcome Banner + Key Achievement Metrics', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
+      { name: 'Our Core Services & Products Grid', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Client Case Studies & Project Portfolio', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
+      { name: 'Company Leadership & Team Section', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
+      { name: 'Book Consultation / Request Official Quote Form', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' },
+      { name: 'Full Site Map Footer + Office Locations', color: 'bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-500' }
     ]
   },
   {
     id: 'ecommerce-store',
-    title: 'E-Commerce Storefront & Catalog',
-    subtitle: 'Best for retail, direct-to-consumer, & digital commerce',
-    goalMatch: 'E-Commerce Retail',
+    title: 'Online Shop & Product Store',
+    subtitle: 'Best for retail businesses wanting to sell products online with instant UPI/Card payments',
+    goalMatch: 'Sell Products Online (E-Commerce Store)',
     basePages: '10+ Pages',
     wireframe: [
-      { name: 'Sitewide Banner + Search + Slide-out Cart', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Hero Seasonal Showcase + Quick Shop CTA', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
-      { name: 'Category Tiles & Filter Bar', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Trending Products 4-Column Grid', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
-      { name: 'Reviews & Social UGC Gallery', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
-      { name: 'One-Click Checkout & Secure Badge Footer', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' }
+      { name: 'Sitewide Sale Announcement + Search + Shopping Cart', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Featured Products Showcase + Buy Now Button', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
+      { name: 'Product Category Boxes & Filter Options', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Trending Best-Seller 4-Column Grid', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
+      { name: 'Customer Photo Reviews & Ratings Gallery', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
+      { name: 'Instant 1-Click Checkout + Razorpay / Cashfree Security Badges', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' }
     ]
   },
   {
     id: 'saas-portal',
-    title: 'SaaS Platform & Authenticated Web App',
-    subtitle: 'Best for digital products, member portals, & dashboard tools',
-    goalMatch: 'SaaS / Client Portal',
+    title: 'Customer Login Portal & Dashboard',
+    subtitle: 'Best for web applications, member account portals, & subscription software',
+    goalMatch: 'Member Login Portal & Private Dashboard',
     basePages: 'Custom Scope',
     wireframe: [
-      { name: 'Top App Bar (Auth State, Notifications, Search)', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Interactive Product Demo / Feature Highlights', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
-      { name: 'Dynamic Tiered Pricing Matrix (Monthly/Annual)', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Collapsible Dashboard Sidebar (App View)', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
-      { name: 'Real-Time Analytics Widgets & Tables', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
-      { name: 'Self-Service Onboarding / Stripe Billing Portal', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' }
+      { name: 'Top Account Bar (User Profile, Notifications, Search)', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Interactive Demo & Feature Guide', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
+      { name: 'Subscription Plan Comparison Cards', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Customer Dashboard Side Navigation', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
+      { name: 'Real-Time Reports & Data Tables', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
+      { name: 'Self-Service Customer Profile & Billing Management', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' }
     ]
   },
   {
     id: 'content-hub',
-    title: 'Content & Editorial Publishing Hub',
-    subtitle: 'Best for blogs, industry news outlets, & resource directories',
-    goalMatch: 'Publishing & Media',
+    title: 'News, Blog & Article Magazine',
+    subtitle: 'Best for blogs, industry news publishing, & online resource centers',
+    goalMatch: 'News, Articles & Media Publishing',
     basePages: 'Dynamic Catalog',
     wireframe: [
-      { name: 'Sticky Category Filter Bar + Search', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Hero Featured Editorial Story', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
-      { name: 'Masonry / 3-Column Article Feed', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
-      { name: 'Inline Newsletter Subscription Break', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' },
-      { name: 'Topic Cloud & Recommended Reads', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
-      { name: 'RSS, Syndication, & Legal Footer', color: 'bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-500' }
+      { name: 'Category Filter Buttons + Search Bar', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Featured Breaking Story Banner', color: 'bg-teal-600/25 text-teal-900 dark:bg-zinc-700 dark:text-zinc-100' },
+      { name: '3-Column Article Feed Grid', color: 'bg-teal-500/15 text-teal-800 dark:bg-zinc-800 dark:text-zinc-200' },
+      { name: 'Newsletter Subscription Sign-up Box', color: 'bg-emerald-500/20 text-emerald-800 dark:bg-zinc-700 dark:text-zinc-100' },
+      { name: 'Trending Topics & Recommended Articles', color: 'bg-slate-100 text-slate-700 dark:bg-zinc-900 dark:text-zinc-400' },
+      { name: 'Publisher Info & Social Media Links', color: 'bg-slate-200 text-slate-600 dark:bg-zinc-900 dark:text-zinc-500' }
     ]
   }
 ];
 
-// Visual Design Styles (Plain-English for Senior Executives)
+// Visual Design Styles (Plain-English Layman Language)
 const DESIGN_STYLES = [
   {
     id: 'frosted-glass',
     name: '💎 Modern Frosted Glass (Glassmorphism)',
     tag: 'High-Tech & Premium',
-    desc: 'Sleek translucent panels with subtle metallic borders and soft glow. Gives your brand a cutting-edge, high-tech luxury feel.',
+    desc: 'Sleek translucent glass panels with soft glowing borders. Gives your business a high-tech modern luxury portal look.',
     previewBg: 'bg-gradient-to-br from-slate-900 via-zinc-900 to-slate-950 text-white',
     cardStyle: 'bg-white/10 backdrop-blur-md border border-white/20 shadow-xl',
     buttonStyle: 'bg-teal-500 text-white shadow-lg shadow-teal-500/30'
@@ -126,7 +127,7 @@ const DESIGN_STYLES = [
     id: 'executive-minimalist',
     name: '🏛️ Clean Corporate Executive (Minimalist)',
     tag: 'Corporate & Trusted',
-    desc: 'Ultra-clean white space, bold typography, and crisp contrast — similar to Forbes or Apple corporate websites. Highly authoritative.',
+    desc: 'Ultra-clean white background, bold clear text — like a Forbes or Apple corporate report. Easy to read and highly trustworthy.',
     previewBg: 'bg-white text-slate-900 border border-slate-200',
     cardStyle: 'bg-slate-50 border border-slate-300 shadow-sm',
     buttonStyle: 'bg-slate-900 text-white shadow-md'
@@ -134,8 +135,8 @@ const DESIGN_STYLES = [
   {
     id: 'bold-impact',
     name: '🚀 Bold High-Impact Luxury (Maximum)',
-    tag: 'High Conversion & Vibrant',
-    desc: 'Deep rich contrasts, prominent call-to-action buttons, and large bold headlines. Impossible for prospective customers to miss.',
+    tag: 'Vibrant & Eye-Catching',
+    desc: 'Deep dark contrasts, large prominent buttons, and eye-catching headlines. Impossible for prospective customers to miss.',
     previewBg: 'bg-zinc-950 text-white border border-zinc-800',
     cardStyle: 'bg-zinc-900 border border-zinc-700 shadow-2xl',
     buttonStyle: 'bg-white text-zinc-950 font-extrabold shadow-lg'
@@ -144,8 +145,8 @@ const DESIGN_STYLES = [
 
 const PRICING_PRESETS = {
   inbound: {
-    name: '🚀 Inbound Magnet Rate (Razorpay & Cashfree Included)',
-    desc: 'Ultra-competitive pricing designed to convert clients instantly with ₹9,000 dual payment gateways.',
+    name: '🚀 Inbound Magnet Package (Best Value for Money)',
+    desc: 'Maximum savings! Includes Razorpay & Cashfree payment setup for just ₹9,000.',
     basePageRate: 2500, // ₹2,500 / page
     features: {
       contact_form: { price: 3500, hours: 4 },
@@ -159,7 +160,7 @@ const PRICING_PRESETS = {
     }
   },
   standard: {
-    name: '⚖️ Standard Agency Market Rate',
+    name: '⚖️ Standard Market Rate',
     desc: 'Average traditional market pricing across Indian web agencies.',
     basePageRate: 8500, // ₹8,500 / page
     features: {
@@ -174,8 +175,8 @@ const PRICING_PRESETS = {
     }
   },
   enterprise: {
-    name: '👑 Enterprise Custom Tier',
-    desc: 'Premium bespoke engineering tier for large corporate clients.',
+    name: '👑 Enterprise Custom Package',
+    desc: 'Bespoke corporate engineering tier for large enterprise clients.',
     basePageRate: 14500, // ₹14,500 / page
     features: {
       contact_form: { price: 20000, hours: 4 },
@@ -191,14 +192,14 @@ const PRICING_PRESETS = {
 };
 
 const FEATURE_LABELS: Record<string, string> = {
-  contact_form: 'Lead Capture & Smart Contact Form',
-  cms: 'CMS Engine (Blog / Case Studies / News)',
-  seo: 'Technical On-Page SEO & Schema Markup',
-  payments: 'Dual Payment Gateway Sync (Razorpay & Cashfree Checkout)',
-  auth_portal: 'User Authentication & Client Portal Dashboard',
-  booking: 'Interactive Calendar / Booking Sync',
-  crm_sync: 'CRM / Email Marketing Webhooks',
-  multilingual: 'Multilingual / Localization Support'
+  contact_form: 'Smart Contact Form (Get Customer Enquiries directly in Email)',
+  cms: 'Easy Article & Photo Editor (Update Your Site Anytime Without Help)',
+  seo: 'Google Search Setup (Help New Customers Find You on Google)',
+  payments: 'Online Payment System (Accept UPI, Google Pay, PhonePe, Cards via Razorpay & Cashfree)',
+  auth_portal: 'Customer Login Area & Secret Member Account Dashboard',
+  booking: 'Online Appointment & Meeting Booking System',
+  crm_sync: 'Automatic Customer Alerts & Email Notification System',
+  multilingual: 'Multi-Language Support (English, Hindi & Regional Languages)'
 };
 
 export default function AgencyPlannerApp() {
@@ -212,10 +213,10 @@ export default function AgencyPlannerApp() {
   const [discovery, setDiscovery] = useState({
     clientName: 'Apex Healthtech India',
     industry: 'Health & Wellness SaaS',
-    primaryGoal: 'SaaS / Client Portal',
+    primaryGoal: 'Member Login Portal & Private Dashboard',
     targetAudience: 'Health clinics & B2B medical providers',
     pageCount: 6,
-    turnaround: 'Standard (3-4 weeks)',
+    turnaround: 'Standard Delivery (3-4 Weeks)',
     selectedFeatures: ['contact_form', 'cms', 'seo', 'auth_portal', 'payments']
   });
 
@@ -261,7 +262,7 @@ export default function AgencyPlannerApp() {
     }, 0);
 
     let speedMultiplier = 1.0;
-    if (discovery.turnaround.includes('Expedited')) speedMultiplier = 1.35;
+    if (discovery.turnaround.includes('Fast Track')) speedMultiplier = 1.35;
     if (discovery.turnaround.includes('Phased')) speedMultiplier = 0.95;
 
     const subtotal = Math.round((pageCost + featureCost) * speedMultiplier);
@@ -299,121 +300,109 @@ export default function AgencyPlannerApp() {
 
   const currentArchetype = UX_ARCHETYPES.find(a => a.id === selectedArchetypeId) || UX_ARCHETYPES[0];
 
-  // Document Generator Templates (INR & 18% GST Compliance)
+  // Document Generator Templates (INR & 18% GST Compliance - Layman Language)
   const prdContent = useMemo(() => {
-    return `# PRODUCT REQUIREMENTS DOCUMENT (PRD)
-**Project Name:** ${discovery.clientName} Website Redesign & Build
-**Client:** ${discovery.clientName} (${discovery.industry})
-**Date:** ${new Date().toLocaleDateString('en-IN')}
-**Selected Layout Archetype:** ${currentArchetype.title}
-**Visual Design Theme:** ${activeDesignStyle.name}
-**Pricing Strategy:** ${activePreset.name}
+    return `# OFFICIAL BUSINESS REQUIREMENTS SUMMARY
+**Business Name:** ${discovery.clientName}
+**Industry:** ${discovery.industry}
+**Date Generated:** ${new Date().toLocaleDateString('en-IN')}
+**Chosen Page Layout:** ${currentArchetype.title}
+**Chosen Design Style:** ${activeDesignStyle.name}
+**Package Tier:** ${activePreset.name}
 
 ---
 
-## 1. Executive Summary & Objectives
-The primary goal of this project is to build a responsive, high-performance web platform tailored for **${discovery.primaryGoal}**. 
-Target Audience: ${discovery.targetAudience}.
-Estimated Scope: ${discovery.pageCount} bespoke responsive pages.
+## 1. Project Goal & Audience
+The main goal of this website project is **${discovery.primaryGoal}**. 
+Target Customers: ${discovery.targetAudience}.
+Total Estimated Pages: ${discovery.pageCount} Pages.
 
 ---
 
-## 2. Core Functional Requirements
+## 2. Selected Features & Addons
 ${discovery.selectedFeatures.map(fid => {
   const label = FEATURE_LABELS[fid];
   return `### ${label}
-- **Scope:** Complete implementation and testing (Includes Razorpay & Cashfree integration if selected).
-- **Acceptance Criteria:** Fully responsive, error-handled, cross-browser verified.`;
+- **Status:** Included in package scope.
+- **Goal:** Tested and verified across mobile and desktop.`;
 }).join('\n\n')}
 
 ---
 
-## 3. Visual Design Style & Layout Hierarchy
-- **Visual Design Theme:** ${activeDesignStyle.name} (${activeDesignStyle.tag})
-- **Information Architecture:** ${currentArchetype.title}
+## 3. Website Design Style & Layout
+- **Visual Design Style:** ${activeDesignStyle.name} (${activeDesignStyle.tag})
+- **Page Structure:** ${currentArchetype.title}
 - **Key Page Sections:**
 ${currentArchetype.wireframe.map((wf, idx) => `  ${idx + 1}. ${wf.name}`).join('\n')}
 
 ---
 
-## 4. Statutory & Quality Standards
+## 4. Quality & Government Tax Notice
 - **Tax Classification:** 18% GST Applicable under SAC Code 998314 (IT Design & Development Services).
-- **Performance:** Google Core Web Vitals score >= 90 on mobile & desktop.
-- **Security:** 100% SSL encryption, secure environment variables, sanitized form inputs.
-- **Accessibility:** WCAG 2.1 AA compliant typography and contrast ratios.`;
+- **Google Mobile Score:** 90+ Speed Performance on mobile & desktop.
+- **Security:** Free SSL security certificate, encrypted forms, and daily backup system.`;
   }, [discovery, currentArchetype, activeDesignStyle, activePreset]);
 
   const trdContent = useMemo(() => {
-    return `# TECHNICAL REQUIREMENTS DOCUMENT (TRD)
-**Project:** ${discovery.clientName} Technical Blueprint
-**Architecture:** Modern Jamstack / Full-Stack SSR
+    return `# TECHNICAL & SECURITY BLUEPRINT
+**Project:** ${discovery.clientName} Technical Overview
+**Technology Engine:** Next.js (App Router) / React 19 / TypeScript
 **Selected Visual Style:** ${activeDesignStyle.name}
-**Estimated Development Effort:** ~${quoteCalculation.totalHours} Engineering Hours
+**Estimated Build Effort:** ~${quoteCalculation.totalHours} Working Hours
 
 ---
 
-## 1. System Architecture & Tech Stack
-- **Frontend Framework:** Next.js (App Router) / React 19 / TypeScript
-- **Styling & UI:** Tailwind CSS + Radix UI primitives (${activeDesignStyle.name} Tokens)
-- **Hosting & Edge Delivery:** Vercel Edge Network / Cloudflare CDN
-- **Database & Backend:** Supabase (PostgreSQL) or Headless CMS (Sanity/Strapi)
-- **Authentication:** NextAuth.js / Supabase Auth (OAuth + Magic Links)
-- **Payment Gateway Sync:** Razorpay SDK + Cashfree Payments API (Dual Gateway Integration @ ₹9,000)
+## 1. Technology & Online Payments
+- **Website Engine:** Next.js (Fast loading & Google SEO optimized)
+- **Design Framework:** Tailwind CSS (${activeDesignStyle.name})
+- **Cloud Hosting:** Cloudflare CDN & Vercel Edge Server
+- **Database System:** Supabase Secure Database (PostgreSQL)
+- **Payment Gateway:** Dual Integration — Razorpay & Cashfree (UPI, Cards, NetBanking @ ₹9,000)
 
 ---
 
-## 2. Page Hierarchy & Routing Strategy
-- \`/ (Root):\` Main Landing page with dynamic hero, social proof, and value proposition.
-- \`/features:\` Detailed feature breakdown & capabilities.
-- \`/pricing:\` Interactive tiered calculation and INR checkout initiation.
-- \`/portal:\` Authenticated user space and dashboard views.
-- \`/api/webhooks:\` Edge-based API handlers for Razorpay/Cashfree & CRM events.
-
----
-
-## 3. Security & Operational Checklist
-- [x] Environment variable isolation (\`.env.local\`)
-- [x] Rate limiting on public API endpoints
-- [x] Automated weekly database snapshots
-- [x] Strict CSP (Content Security Policy) and CORS rules`;
+## 2. Page Structure & Security Checklist
+- [x] Secure SSL Certificate Encryption
+- [x] Google Mobile Speed & SEO Optimization
+- [x] Automatic Weekly Backup System
+- [x] 18% GST Invoice & Input Tax Credit (ITC) Support`;
   }, [discovery, quoteCalculation, activeDesignStyle]);
 
   const contractContent = useMemo(() => {
-    return `# STATEMENT OF WORK & SERVICE AGREEMENT
+    return `# OFFICIAL STATEMENT OF WORK & LEGAL AGREEMENT
 
-**Client:** ${discovery.clientName}
+**Client / Business Name:** ${discovery.clientName}
 **Service Provider:** Web Development Agency
 **Effective Date:** ${new Date().toLocaleDateString('en-IN')}
-**Selected Visual Theme:** ${activeDesignStyle.name}
-**Selected Pricing Strategy:** ${activePreset.name}
-**Taxable Subtotal:** ₹${quoteCalculation.subtotal.toLocaleString('en-IN')} INR
-**Goods & Services Tax (18% GST):** ₹${quoteCalculation.gstAmount.toLocaleString('en-IN')} INR (SAC Code: 998314)
-**Total Fixed Contract Sum (Incl. 18% GST):** ₹${quoteCalculation.total.toLocaleString('en-IN')} INR
-${quoteCalculation.savingsAmount > 0 ? `**Estimated Client Savings:** ₹${quoteCalculation.savingsAmount.toLocaleString('en-IN')} INR (${quoteCalculation.savingsPercent}% Below Average Market Agency Rates)` : ''}
+**Package Tier:** ${activePreset.name}
+**Website Work Price (Before Tax):** ₹${quoteCalculation.subtotal.toLocaleString('en-IN')} INR
+**Government Tax (18% GST):** ₹${quoteCalculation.gstAmount.toLocaleString('en-IN')} INR (SAC Code: 998314)
+**Final Total Price (Including All Taxes):** ₹${quoteCalculation.total.toLocaleString('en-IN')} INR
+${quoteCalculation.savingsAmount > 0 ? `**Your Market Savings:** ₹${quoteCalculation.savingsAmount.toLocaleString('en-IN')} INR (${quoteCalculation.savingsPercent}% Below Average Market Agency Rates)` : ''}
 
 ---
 
 ### 1. Scope of Deliverables
-The Service Provider agrees to design, develop, and deploy the digital web solution according to the following specifications:
+The Service Provider agrees to design, build, test, and launch the custom website according to the following scope:
 - Visual Theme: ${activeDesignStyle.name}
-- Architecture: ${currentArchetype.title}
+- Layout Structure: ${currentArchetype.title}
 - Total Page Scope: ${discovery.pageCount} Pages
-- Included Modules: ${discovery.selectedFeatures.map(f => FEATURE_LABELS[f]).join(', ')}
-- Delivery Timeline: ${discovery.turnaround}
+- Included Features: ${discovery.selectedFeatures.map(f => FEATURE_LABELS[f]).join(', ')}
+- Target Delivery Time: ${discovery.turnaround}
 
 ---
 
-### 2. Payment Terms & Milestone Schedule (Incl. 18% GST)
-Payments shall be rendered in three (3) milestone installments upon issuance of GST-compliant Tax Invoices:
-1. **Initial Project Deposit (50%):** ₹${quoteCalculation.deposit.toLocaleString('en-IN')} INR (Due upon signing before sprint kickoff)
-2. **Design & Midpoint Approval (25%):** ₹${quoteCalculation.midpoint.toLocaleString('en-IN')} INR (Due upon UX/UI signoff)
-3. **Pre-Launch Final Balance (25%):** ₹${quoteCalculation.final.toLocaleString('en-IN')} INR (Due prior to domain DNS cutover & production launch)
+### 2. Simple Payment Milestone Schedule (Includes 18% GST)
+Payment shall be rendered in three (3) clear installments upon GST Tax Invoice issuance:
+1. **Stage 1 Initial Deposit (50%):** ₹${quoteCalculation.deposit.toLocaleString('en-IN')} INR (Due upon signing to start project)
+2. **Stage 2 Midpoint Approval (25%):** ₹${quoteCalculation.midpoint.toLocaleString('en-IN')} INR (Due upon design signoff)
+3. **Stage 3 Final Pre-Launch Balance (25%):** ₹${quoteCalculation.final.toLocaleString('en-IN')} INR (Due right before website launch)
 
 ---
 
-### 3. Statutory GST Law Compliance (18% GST)
-- All fees quoted under this Statement of Work are subject to 18% Goods & Services Tax (GST) as per the Central Goods & Services Tax (CGST) and State Goods & Services Tax (SGST) / IGST Acts, 2017.
-- Tax invoices will be issued under SAC Code 998314 (*Information Technology Design & Development Services*).
+### 3. Government Tax Compliance (18% GST)
+- All fees quoted under this official agreement are subject to 18% Goods & Services Tax (GST) as per the Goods & Services Tax Act, 2017.
+- Official tax invoices will be issued under SAC Code 998314 (*Information Technology Design & Development Services*), enabling your business to claim 100% Input Tax Credit (ITC).
 
 ---
 
@@ -440,10 +429,10 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
         <header className="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-6 gap-4">
           <div>
             <div className="flex items-center gap-2 text-teal-600 dark:text-slate-300 text-sm font-semibold tracking-wide uppercase">
-              <Sparkles className="w-4 h-4" /> Agency Planning Engine (Executive Guide & 18% GST)
+              <Sparkles className="w-4 h-4" /> Instant Customer Quote & Agreement Tool
             </div>
             <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-1">
-              Website Discovery & Architecture Suite
+              Website Discovery & Pricing Engine
             </h1>
           </div>
           <div className="flex items-center gap-3">
@@ -456,10 +445,10 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
         {/* STEP PROGRESS BAR */}
         <nav className="grid grid-cols-4 gap-2 md:gap-4">
           {[
-            { num: 1, label: 'Discovery Intake', icon: Compass },
-            { num: 2, label: 'Visual Style & Layout', icon: Eye },
-            { num: 3, label: 'Quote & 18% GST', icon: Receipt },
-            { num: 4, label: 'PRD, TRD & SOW', icon: FileText },
+            { num: 1, label: 'Business & Goal Intake', icon: Compass },
+            { num: 2, label: 'Design Look & Feel', icon: Eye },
+            { num: 3, label: 'Clear Price & 18% GST', icon: Receipt },
+            { num: 4, label: 'Official Contract & Specs', icon: FileText },
           ].map(step => {
             const Icon = step.icon;
             const isActive = currentStep === step.num;
@@ -488,22 +477,22 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
           })}
         </nav>
 
-        {/* STEP 1: DISCOVERY & PRICING PRESET SELECTION */}
+        {/* STEP 1: BUSINESS INTAKE & PRICING PACKAGE SELECTION */}
         {currentStep === 1 && (
           <div className="bg-slate-50/60 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm transition-colors">
             <div>
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Compass className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Client Discovery & Business Objectives
+                <Compass className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Step 1: Tell Us About Your Business & Goals
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                Enter your client requirements with Razorpay & Cashfree integration at ₹9,000.
+                Fill in your business details below to generate an instant clear website quote in Indian Rupees (₹ INR).
               </p>
             </div>
 
             {/* Pricing Strategy Selector Card */}
             <div className="space-y-3">
               <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
-                <Award className="w-4 h-4 text-teal-600 dark:text-slate-300" /> Investment Rate Strategy
+                <Award className="w-4 h-4 text-teal-600 dark:text-slate-300" /> Choose Your Pricing Package Tier
               </label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {(['inbound', 'standard', 'enterprise'] as const).map(tierKey => {
@@ -523,7 +512,7 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                         <h4 className="font-bold text-xs text-slate-900 dark:text-white">{preset.name}</h4>
                         {tierKey === 'inbound' && (
                           <span className="text-[9px] px-2 py-0.5 rounded bg-teal-600 text-white font-mono font-bold">
-                            High Conversion
+                            Best Value
                           </span>
                         )}
                       </div>
@@ -539,7 +528,7 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
               <div className="space-y-2">
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Client / Brand Name</label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Your Business or Brand Name</label>
                 <input
                   type="text"
                   value={discovery.clientName}
@@ -549,7 +538,7 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Industry / Niche</label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Your Business Field / Industry</label>
                 <input
                   type="text"
                   value={discovery.industry}
@@ -559,35 +548,35 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Primary Objective</label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">What is the main goal of your website?</label>
                 <select
                   value={discovery.primaryGoal}
                   onChange={(e) => handleGoalChange(e.target.value)}
                   className="w-full bg-white dark:bg-zinc-950 border border-slate-300 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 transition-colors"
                 >
-                  <option>Lead Generation</option>
-                  <option>Corporate Presence</option>
-                  <option>E-Commerce Retail</option>
-                  <option>SaaS / Client Portal</option>
-                  <option>Publishing & Media</option>
+                  <option>Get More Customer Leads & Enquiries</option>
+                  <option>Professional Business & Corporate Presence</option>
+                  <option>Sell Products Online (E-Commerce Store)</option>
+                  <option>Member Login Portal & Private Dashboard</option>
+                  <option>News, Articles & Media Publishing</option>
                 </select>
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Target Delivery Schedule</label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">When do you need your website live?</label>
                 <select
                   value={discovery.turnaround}
                   onChange={(e) => setDiscovery({ ...discovery, turnaround: e.target.value })}
                   className="w-full bg-white dark:bg-zinc-950 border border-slate-300 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 transition-colors"
                 >
-                  <option>Standard (3-4 weeks)</option>
-                  <option>Expedited (1-2 weeks) [+35% rush fee]</option>
-                  <option>Phased Deployment (6+ weeks)</option>
+                  <option>Standard Delivery (3-4 Weeks)</option>
+                  <option>Fast Track Rush (1-2 Weeks) [+35% Rush Fee]</option>
+                  <option>Phased Step-by-Step Rollout (6+ Weeks)</option>
                 </select>
               </div>
 
               <div className="space-y-2 md:col-span-2">
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Target Audience & Buyer Persona</label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Who are your main target customers?</label>
                 <input
                   type="text"
                   value={discovery.targetAudience}
@@ -598,7 +587,7 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
 
               <div className="space-y-3 md:col-span-2">
                 <div className="flex justify-between items-center">
-                  <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Estimated Page Count Scope</label>
+                  <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">How many pages do you need on your website?</label>
                   <span className="text-sm font-bold text-teal-700 dark:text-white px-3 py-1 bg-teal-50 dark:bg-zinc-800 rounded-lg border border-teal-200 dark:border-zinc-700">
                     {discovery.pageCount} Pages (₹{(discovery.pageCount * activePreset.basePageRate).toLocaleString('en-IN')})
                   </span>
@@ -614,7 +603,7 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
               </div>
 
               <div className="space-y-3 md:col-span-2">
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Required Functional Features</label>
+                <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Select Website Features & Addons You Need</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {Object.keys(FEATURE_LABELS).map(featId => {
                     const isChecked = discovery.selectedFeatures.includes(featId);
@@ -650,28 +639,28 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                 onClick={() => setCurrentStep(2)}
                 className="flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-500 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold rounded-xl transition-all shadow-md"
               >
-                Proceed to Visual Design Style Selector <ChevronRight className="w-4 h-4" />
+                Proceed to Design Look & Feel <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         )}
 
-        {/* STEP 2: VISUAL DESIGN STYLE & LAYOUT SELECTOR (EXECUTIVE FRIENDLY) */}
+        {/* STEP 2: VISUAL DESIGN LOOK & FEEL SELECTOR */}
         {currentStep === 2 && (
           <div className="bg-slate-50/60 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm transition-colors">
             <div>
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Eye className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Visual Design Style & Website Structure
+                <Eye className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Step 2: Choose Your Website Look, Feel & Page Layout
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                Choose the visual design theme and page layout structure for your business website.
+                Select your preferred visual theme and preview a live sample website hero section below.
               </p>
             </div>
 
             {/* Visual Design Theme Cards */}
             <div className="space-y-3">
               <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
-                1. Select Visual Design Look & Feel
+                1. Select Visual Design Theme
               </label>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {DESIGN_STYLES.map(style => {
@@ -702,8 +691,8 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
             {/* LIVE SAMPLE VISUAL PREVIEW BOX */}
             <div className="space-y-3 pt-2">
               <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center justify-between">
-                <span>2. Live Website Visual Style Preview</span>
-                <span className="text-teal-700 dark:text-slate-300 font-mono text-[11px]">Selected: {activeDesignStyle.name}</span>
+                <span>2. Live Website Sample Preview (How Your Website Will Look to Customers)</span>
+                <span className="text-teal-700 dark:text-slate-300 font-mono text-[11px]">Active Style: {activeDesignStyle.name}</span>
               </label>
 
               {/* Sample Live Website Hero Container */}
@@ -715,9 +704,9 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                   </div>
                   <div className="flex items-center gap-3 text-xs font-medium opacity-80">
                     <span>Services</span>
-                    <span>About</span>
+                    <span>About Us</span>
                     <button className={`px-3 py-1.5 rounded-lg text-xs font-bold ${activeDesignStyle.buttonStyle}`}>
-                      Get Started
+                      Contact Us
                     </button>
                   </div>
                 </div>
@@ -739,21 +728,21 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                   <div className={`p-4 rounded-xl space-y-3 ${activeDesignStyle.cardStyle}`}>
                     <div className="flex items-center gap-2">
                       <Star className="w-4 h-4 text-amber-400 fill-current" />
-                      <span className="text-xs font-bold">Client Trust Score 99.8%</span>
+                      <span className="text-xs font-bold">Client Rating 4.9 / 5 Stars</span>
                     </div>
                     <p className="text-[11px] opacity-80">"Next-gen design with 18% GST statutory invoice compliance."</p>
                     <button className={`w-full py-2 rounded-lg text-xs font-bold ${activeDesignStyle.buttonStyle}`}>
-                      Request Consultation
+                      Book Free Consultation
                     </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Page Wireframe Structure List */}
+            {/* Page Structure Layout List */}
             <div className="space-y-3 pt-2">
               <label className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
-                3. Page Layout Structure ({currentArchetype.title})
+                3. Choose Page Structure Layout ({currentArchetype.title})
               </label>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -776,7 +765,7 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                           <h3 className="font-semibold text-sm text-slate-900 dark:text-white">{arch.title}</h3>
                           {isRecommended && (
                             <span className="text-[10px] bg-teal-100 dark:bg-zinc-700 text-teal-800 dark:text-slate-200 border border-teal-300 dark:border-zinc-600 px-2 py-0.5 rounded-full font-mono font-semibold">
-                              Auto-Match
+                              Recommended
                             </span>
                           )}
                         </div>
@@ -791,7 +780,7 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                   <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-3">
                     <div>
                       <h3 className="text-sm font-bold text-slate-900 dark:text-white">{currentArchetype.title} Layout</h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">Page structure blocks from top to bottom</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Page sections from top to bottom</p>
                     </div>
                     <span className="text-xs font-mono text-teal-700 dark:text-white bg-teal-50 dark:bg-zinc-800 px-2.5 py-1 rounded border border-teal-200 dark:border-zinc-700 font-bold">
                       {currentArchetype.basePages}
@@ -823,27 +812,27 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                 onClick={() => setCurrentStep(1)}
                 className="flex items-center gap-2 px-5 py-2.5 bg-slate-200 dark:bg-zinc-800 hover:bg-slate-300 dark:hover:bg-zinc-700 text-slate-800 dark:text-slate-300 font-medium rounded-xl transition-all"
               >
-                <ChevronLeft className="w-4 h-4" /> Back to Discovery
+                <ChevronLeft className="w-4 h-4" /> Back to Business Intake
               </button>
               <button
                 onClick={() => setCurrentStep(3)}
                 className="flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-500 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold rounded-xl transition-all shadow-md"
               >
-                Calculate Quote & 18% GST <ChevronRight className="w-4 h-4" />
+                Calculate Clear Price & 18% GST <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         )}
 
-        {/* STEP 3: QUOTE & 18% GST BREAKDOWN */}
+        {/* STEP 3: CLEAR PRICE & 18% GST TAX BREAKDOWN */}
         {currentStep === 3 && (
           <div className="bg-slate-50/60 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm transition-colors">
             <div>
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Receipt className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Quotation & Statutory 18% GST Engine
+                <Receipt className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Step 3: See Your Clear Pricing & Government Tax Summary
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                Itemized breakdown in Indian Rupees (₹ INR) including compulsory 18% GST under SAC Code 998314.
+                Full transparent cost breakdown in Indian Rupees (₹ INR) including compulsory 18% GST government tax.
               </p>
             </div>
 
@@ -855,8 +844,8 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                     <TrendingDown className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="font-extrabold text-sm text-slate-900 dark:text-white block">Inbound Magnet Pricing Advantage</span>
-                    <span>Your client saves <strong className="font-mono text-emerald-700 dark:text-emerald-400">₹{quoteCalculation.savingsAmount.toLocaleString('en-IN')} INR ({quoteCalculation.savingsPercent}%)</strong> compared to standard market agency quotes!</span>
+                    <span className="font-extrabold text-sm text-slate-900 dark:text-white block">🎉 Special Package Savings Highlight</span>
+                    <span>You save <strong className="font-mono text-emerald-700 dark:text-emerald-400">₹{quoteCalculation.savingsAmount.toLocaleString('en-IN')} INR ({quoteCalculation.savingsPercent}%)</strong> compared to average traditional agency rates!</span>
                   </div>
                 </div>
 
@@ -869,7 +858,7 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Cost Summary Box */}
               <div className="bg-gradient-to-br from-teal-50 to-slate-100 dark:from-zinc-950 dark:to-zinc-900 border border-teal-200 dark:border-zinc-800 rounded-xl p-6 space-y-4 shadow-sm">
-                <span className="text-xs font-semibold uppercase tracking-wider text-teal-800 dark:text-slate-400">Total Fixed Investment (Incl. 18% GST)</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-teal-800 dark:text-slate-400">Final Total Price (Including All Taxes)</span>
                 <div className="text-3xl font-extrabold text-slate-900 dark:text-white">
                   ₹{quoteCalculation.total.toLocaleString('en-IN')}
                   <span className="text-xs font-normal text-slate-500 dark:text-slate-400 ml-1.5">INR</span>
@@ -880,42 +869,42 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                     <span className="font-mono text-slate-900 dark:text-white font-bold">₹{quoteCalculation.pageCost.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Module Addons ({discovery.selectedFeatures.length}):</span>
+                    <span>Selected Features ({discovery.selectedFeatures.length}):</span>
                     <span className="font-mono text-slate-900 dark:text-white font-bold">₹{quoteCalculation.featureCost.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between border-t border-slate-200/80 dark:border-zinc-800/80 pt-2 font-bold">
-                    <span>Taxable Subtotal:</span>
+                    <span>Website Work Price (Before Tax):</span>
                     <span className="font-mono text-slate-900 dark:text-white">₹{quoteCalculation.subtotal.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between text-teal-700 dark:text-teal-400 font-bold">
-                    <span>GST @ 18% (SAC 998314):</span>
+                    <span>Government Tax (18% GST):</span>
                     <span className="font-mono">+₹{quoteCalculation.gstAmount.toLocaleString('en-IN')}</span>
                   </div>
-                  <div className="flex justify-between border-t border-slate-200/80 dark:border-zinc-800/80 pt-2">
-                    <span>Estimated Dev Effort:</span>
-                    <span className="font-mono text-teal-700 dark:text-white font-bold">~{quoteCalculation.totalHours} Hours</span>
+                  <div className="flex justify-between border-t border-slate-200/80 dark:border-zinc-800/80 pt-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <span>GST Tax Credit (ITC):</span>
+                    <span className="font-mono text-emerald-700 dark:text-emerald-400 font-bold">100% Claimable</span>
                   </div>
                 </div>
               </div>
 
               {/* Milestones Box */}
               <div className="md:col-span-2 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl p-6 space-y-4">
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Payment Milestone Schedule (Incl. 18% GST)</h3>
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Simple 3-Stage Payment Schedule (Includes 18% GST)</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                   <div className="p-4 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-sm">
-                    <span className="text-[10px] uppercase font-mono text-teal-700 dark:text-slate-400 font-bold">Milestone 1 (50%)</span>
+                    <span className="text-[10px] uppercase font-mono text-teal-700 dark:text-slate-400 font-bold">Stage 1 Deposit (50%)</span>
                     <div className="text-base font-bold text-slate-900 dark:text-white mt-1">₹{quoteCalculation.deposit.toLocaleString('en-IN')}</div>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Deposit upon signing to begin sprint</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Pay upon signing to start your project</p>
                   </div>
                   <div className="p-4 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-sm">
-                    <span className="text-[10px] uppercase font-mono text-teal-700 dark:text-slate-400 font-bold">Milestone 2 (25%)</span>
+                    <span className="text-[10px] uppercase font-mono text-teal-700 dark:text-slate-400 font-bold">Stage 2 Midpoint (25%)</span>
                     <div className="text-base font-bold text-slate-900 dark:text-white mt-1">₹{quoteCalculation.midpoint.toLocaleString('en-IN')}</div>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Design signoff & core dev build</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Pay after design & layout approval</p>
                   </div>
                   <div className="p-4 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-sm">
-                    <span className="text-[10px] uppercase font-mono text-teal-700 dark:text-slate-400 font-bold">Milestone 3 (25%)</span>
+                    <span className="text-[10px] uppercase font-mono text-teal-700 dark:text-slate-400 font-bold">Stage 3 Final Balance (25%)</span>
                     <div className="text-base font-bold text-slate-900 dark:text-white mt-1">₹{quoteCalculation.final.toLocaleString('en-IN')}</div>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Pre-launch QA & DNS handover</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Pay right before your website goes live</p>
                   </div>
                 </div>
               </div>
@@ -926,37 +915,37 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                 onClick={() => setCurrentStep(2)}
                 className="flex items-center gap-2 px-5 py-2.5 bg-slate-200 dark:bg-zinc-800 hover:bg-slate-300 dark:hover:bg-zinc-700 text-slate-800 dark:text-slate-300 font-medium rounded-xl transition-all"
               >
-                <ChevronLeft className="w-4 h-4" /> Back to Style Selector
+                <ChevronLeft className="w-4 h-4" /> Back to Design Style
               </button>
               <button
                 onClick={() => setCurrentStep(4)}
                 className="flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-500 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold rounded-xl transition-all shadow-md"
               >
-                Generate PRD, TRD & GST SOW Contract <ChevronRight className="w-4 h-4" />
+                Get Official Agreement & Contract <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         )}
 
-        {/* STEP 4: SPECS & GST CONTRACT HUB */}
+        {/* STEP 4: OFFICIAL CONTRACT & DOCUMENTS HUB */}
         {currentStep === 4 && (
           <div className="bg-slate-50/60 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm transition-colors">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Specification & Legal Hub
+                  <FileText className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Step 4: Your Official Quotation, Tech Summary & Legal Contract
                 </h2>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                  Ready-to-export documents generated dynamically from your scoping data in INR and 18% GST compliance.
+                  Copy or download your complete project specs and ready-to-sign official GST legal agreement.
                 </p>
               </div>
 
               {/* Document Tabs */}
               <div className="flex items-center gap-2 bg-slate-200 dark:bg-zinc-950 p-1 rounded-xl border border-slate-300 dark:border-zinc-800">
                 {[
-                  { id: 'prd', label: '1. PRD (Product)' },
-                  { id: 'trd', label: '2. TRD (Tech Stack)' },
-                  { id: 'sow', label: '3. GST SOW Contract' }
+                  { id: 'prd', label: '1. Business Requirements' },
+                  { id: 'trd', label: '2. Technology & Security Plan' },
+                  { id: 'sow', label: '3. Official Legal Agreement' }
                 ].map(tab => (
                   <button
                     key={tab.id}
@@ -984,7 +973,7 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                   className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-800 dark:text-slate-200 rounded-lg border border-slate-300 dark:border-zinc-700 transition-all text-xs shadow-sm"
                 >
                   {copiedDoc === activeDocTab ? <Check className="w-3.5 h-3.5 text-teal-600 dark:text-white" /> : <Copy className="w-3.5 h-3.5" />}
-                  {copiedDoc === activeDocTab ? 'Copied!' : 'Copy Markdown'}
+                  {copiedDoc === activeDocTab ? 'Copied!' : 'Copy Document'}
                 </button>
               </div>
 
@@ -1000,15 +989,15 @@ Payments shall be rendered in three (3) milestone installments upon issuance of 
                 onClick={() => setCurrentStep(3)}
                 className="flex items-center gap-2 px-5 py-2.5 bg-slate-200 dark:bg-zinc-800 hover:bg-slate-300 dark:hover:bg-zinc-700 text-slate-800 dark:text-slate-300 font-medium rounded-xl transition-all"
               >
-                <ChevronLeft className="w-4 h-4" /> Back to Quote
+                <ChevronLeft className="w-4 h-4" /> Back to Price & GST
               </button>
 
               <button
-                onClick={() => copyToClipboard(`--- PRD ---\n${prdContent}\n\n--- TRD ---\n${trdContent}\n\n--- SOW CONTRACT ---\n${contractContent}`, 'all')}
+                onClick={() => copyToClipboard(`--- BUSINESS REQUIREMENTS ---\n${prdContent}\n\n--- TECH & SECURITY PLAN ---\n${trdContent}\n\n--- OFFICIAL LEGAL AGREEMENT ---\n${contractContent}`, 'all')}
                 className="flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-500 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold rounded-xl transition-all shadow-md"
               >
                 {copiedDoc === 'all' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                {copiedDoc === 'all' ? 'All 3 Docs Copied!' : 'Export All 3 GST Docs'}
+                {copiedDoc === 'all' ? 'All 3 Official Docs Copied!' : 'Export All 3 Documents'}
               </button>
             </div>
           </div>

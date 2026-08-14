@@ -6,8 +6,8 @@ import ThemeToggle from "@/components/ThemeToggle";
 import { Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Website Discovery & Architecture Suite | Agency Planner",
-  description: "Interactive Website Scoping, Wireframe Selector, Quote Engine & Document Generator",
+  title: "Website & Project Planner | Instant Customer Quotation Engine",
+  description: "Easy Website Scoping, Visual Look Selector, Clear Price Engine & Official Contract Generator",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-teal-600 dark:text-slate-300" />
                 <span className="text-xs font-bold text-slate-900 dark:text-white tracking-wide uppercase">
-                  Website Discovery & Architecture Engine
+                  Website & Project Planner (Instant Customer Quotation Tool)
                 </span>
               </div>
 
@@ -36,7 +36,7 @@ export default function RootLayout({
                 <ThemeToggle />
 
                 <span className="text-[11px] px-3 py-1 bg-teal-500/10 dark:bg-zinc-800 text-teal-700 dark:text-slate-200 border border-teal-500/30 dark:border-zinc-700 rounded-full font-mono font-semibold">
-                  Status: Ready for Intake
+                  Status: Ready for Client Intake
                 </span>
               </div>
             </header>

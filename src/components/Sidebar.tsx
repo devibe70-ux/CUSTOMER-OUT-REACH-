@@ -16,15 +16,15 @@ export default function Sidebar() {
           <Sparkles className="w-5 h-5 fill-current" />
         </div>
         <div>
-          <h1 className="font-extrabold text-slate-900 dark:text-white text-base tracking-tight leading-tight">Agency Engine</h1>
-          <p className="text-[11px] text-teal-600 dark:text-slate-400 font-semibold">Discovery & Scope Suite</p>
+          <h1 className="font-extrabold text-slate-900 dark:text-white text-base tracking-tight leading-tight">Website Planner</h1>
+          <p className="text-[11px] text-teal-600 dark:text-slate-400 font-semibold">Easy Scoping & Quote Tool</p>
         </div>
       </div>
 
       {/* Main Nav */}
       <nav className="flex-1 px-3 py-4 space-y-2 overflow-y-auto">
         <div className="px-3 mb-2 text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
-          Architecture Steps
+          Simple 4-Step Process
         </div>
 
         <Link
@@ -37,7 +37,7 @@ export default function Sidebar() {
         >
           <div className="flex items-center gap-3">
             <Compass className="w-4 h-4" />
-            <span>Discovery & Scoping</span>
+            <span>Website Quote Planner</span>
           </div>
           <span className="text-[10px] px-2 py-0.5 rounded-full font-mono bg-teal-700 dark:bg-slate-200 text-white dark:text-slate-900 font-bold">
             Active
@@ -48,8 +48,8 @@ export default function Sidebar() {
       {/* Footer Info */}
       <div className="p-4 border-t border-slate-200 dark:border-zinc-800 bg-slate-50/50 dark:bg-zinc-950/50 transition-colors">
         <div className="bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl p-3 text-center space-y-1">
-          <div className="text-xs font-bold text-slate-900 dark:text-white">Agency Discovery Engine</div>
-          <div className="text-[10px] text-slate-500 dark:text-slate-400">PRD • TRD • SOW Generator</div>
+          <div className="text-xs font-bold text-slate-900 dark:text-white">Instant Customer Quotation</div>
+          <div className="text-[10px] text-slate-500 dark:text-slate-400">Clear Pricing • 18% GST • Legal Contract</div>
         </div>
       </div>
     </aside>
