@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Compass, Sparkles } from 'lucide-react';
+import { Compass, Sparkles, Globe } from 'lucide-react';
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -16,8 +16,8 @@ export default function Sidebar() {
           <Sparkles className="w-5 h-5 fill-current" />
         </div>
         <div>
-          <h1 className="font-extrabold text-slate-900 dark:text-white text-base tracking-tight leading-tight">Website Planner</h1>
-          <p className="text-[11px] text-teal-600 dark:text-slate-400 font-semibold">Easy Scoping & Quote Tool</p>
+          <h1 className="font-extrabold text-slate-900 dark:text-white text-base tracking-tight leading-tight">Devibe Studio</h1>
+          <p className="text-[11px] text-teal-600 dark:text-slate-400 font-semibold">devibestudio.in</p>
         </div>
       </div>
 
@@ -48,7 +48,10 @@ export default function Sidebar() {
       {/* Footer Info */}
       <div className="p-4 border-t border-slate-200 dark:border-zinc-800 bg-slate-50/50 dark:bg-zinc-950/50 transition-colors">
         <div className="bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl p-3 text-center space-y-1">
-          <div className="text-xs font-bold text-slate-900 dark:text-white">Instant Customer Quotation</div>
+          <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center justify-center gap-1">
+            <Globe className="w-3.5 h-3.5 text-teal-600 dark:text-slate-400" />
+            <span>devibestudio.in</span>
+          </div>
           <div className="text-[10px] text-slate-500 dark:text-slate-400">Clear Pricing • 18% GST • Legal Contract</div>
         </div>
       </div>

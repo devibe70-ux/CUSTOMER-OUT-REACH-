@@ -3,11 +3,11 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Website & Project Planner | Instant Customer Quotation Engine",
-  description: "Easy Website Scoping, Visual Look Selector, Clear Price Engine & Official Contract Generator",
+  title: "Devibe Studio | Website Planner & Instant Quotation Engine (devibestudio.in)",
+  description: "Devibe Studio Website Scoping Engine, Visual Look Selector, Clear Price Engine & Official Contract Generator (devibestudio.in)",
 };
 
 export default function RootLayout({
@@ -26,8 +26,9 @@ export default function RootLayout({
             <header className="h-16 border-b border-slate-200 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/60 backdrop-blur-md px-6 flex items-center justify-between sticky top-0 z-20 transition-colors">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-teal-600 dark:text-slate-300" />
-                <span className="text-xs font-bold text-slate-900 dark:text-white tracking-wide uppercase">
-                  Website & Project Planner (Instant Customer Quotation Tool)
+                <span className="text-xs font-bold text-slate-900 dark:text-white tracking-wide uppercase flex items-center gap-2">
+                  <span>Devibe Studio</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-teal-500/10 text-teal-700 dark:text-slate-300 font-mono">devibestudio.in</span>
                 </span>
               </div>
 
@@ -36,7 +37,7 @@ export default function RootLayout({
                 <ThemeToggle />
 
                 <span className="text-[11px] px-3 py-1 bg-teal-500/10 dark:bg-zinc-800 text-teal-700 dark:text-slate-200 border border-teal-500/30 dark:border-zinc-700 rounded-full font-mono font-semibold">
-                  Status: Ready for Client Intake
+                  Status: Ready for Production (devibestudio.in)
                 </span>
               </div>
             </header>

@@ -168,7 +168,7 @@ const DESIGN_STYLES = [
 export const PRICING_PRESETS: Record<'inbound' | 'standard' | 'enterprise', PricingPreset> = {
   inbound: {
     name: '🚀 Inbound Magnet Package (Best Value)',
-    desc: 'Special high-conversion tier. Includes Razorpay & Cashfree dual setup for ₹9,000.',
+    desc: 'Special high-conversion tier by Devibe Studio. Includes Razorpay & Cashfree dual setup for ₹9,000.',
     basePageRate: 2500, // ₹2,500 / page
     features: {
       contact_form: { name: 'Lead Capture & Smart Contact Form', price: 3500, hours: 4 },
@@ -198,7 +198,7 @@ export const PRICING_PRESETS: Record<'inbound' | 'standard' | 'enterprise', Pric
   },
   enterprise: {
     name: '👑 Enterprise Custom Package',
-    desc: 'Bespoke corporate engineering tier for large enterprise clients.',
+    desc: 'Bespoke corporate engineering tier by Devibe Studio for enterprise clients.',
     basePageRate: 14500, // ₹14,500 / page
     features: {
       contact_form: { name: 'Enterprise Lead Capture', price: 20000, hours: 4 },
@@ -227,34 +227,34 @@ const FEATURE_LABELS: Record<string, string> = {
 // Ponytale vs Google Audit Matrix Data
 const AUDIT_MATRIX = [
   {
-    item: '1. DPDP Act 2023 & Privacy',
+    item: '1. Production Domain & Agency Identity',
+    ponytale: 'System must specify official Service Provider domain (devibestudio.in).',
+    google: 'Set Devibe Studio (devibestudio.in) as official Service Provider across metadata, UI, & contracts.',
+    status: '✅ 100% Implemented (devibestudio.in)'
+  },
+  {
+    item: '2. DPDP Act 2023 & Data Privacy',
     ponytale: 'All customer data intake forms & webhooks must strictly comply with India\'s DPDP Act 2023.',
     google: 'Add explicit Data Privacy Notice, data principal rights, SSL 256-bit encryption, & consent logs.',
     status: '✅ 100% Implemented & Verified'
   },
   {
-    item: '2. Domain Ownership Policy',
+    item: '3. Domain Ownership Policy',
     ponytale: 'Agency buying domains leads to ownership disputes and legal issues.',
     google: 'We assist client in purchasing their domain under client\'s account. Client retains 100% domain title.',
     status: '✅ 100% Implemented (Assistance Only)'
   },
   {
-    item: '3. Managed Hosting & IP Terms',
+    item: '4. Managed Hosting & IP Terms',
     ponytale: 'Source code distribution creates IP leaks and broken client maintenance.',
     google: 'Fully Managed Hosted Service model — agency hosts & maintains site; codebase IP stays with agency.',
     status: '✅ 100% Implemented (Managed Hosting)'
   },
   {
-    item: '4. Statutory Tax & Currency',
+    item: '5. Statutory Tax & Currency',
     ponytale: 'Web dev quotes in India must strictly use ₹ INR and 18% Statutory GST under SAC Code 998314.',
     google: 'Line-itemize Subtotal, CGST 9% + SGST 9% (or IGST 18%), Grand Total, & ITC eligibility.',
     status: '✅ 100% Implemented & Verified'
-  },
-  {
-    item: '5. Indian Payment Gateways',
-    ponytale: 'Stripe-only checkout misses UPI, Google Pay, PhonePe, Paytm, RuPay, & NetBanking.',
-    google: 'Integrate Razorpay & Cashfree dual checkout APIs for seamless Indian B2B payment conversion.',
-    status: '✅ 100% Implemented (Dual Sync @ ₹9,000)'
   }
 ];
 
@@ -391,10 +391,11 @@ export default function AgencyPlannerApp() {
 
   const currentArchetype = UX_ARCHETYPES.find(a => a.id === selectedArchetypeId) || UX_ARCHETYPES[0];
 
-  // Document Generator Templates (INR, 18% GST, DPDP Act 2023 & Managed Hosting Terms)
+  // Document Generator Templates (Devibe Studio Branding & Production Compliance)
   const prdContent = useMemo(() => {
     return `# OFFICIAL BUSINESS REQUIREMENTS SUMMARY
-**Business Name:** ${discovery.clientName}
+**Service Provider:** Devibe Studio (devibestudio.in)
+**Client / Business Name:** ${discovery.clientName}
 **Industry:** ${discovery.industry}
 **Date Generated:** ${new Date().toLocaleDateString('en-IN')}
 **Chosen Page Layout:** ${currentArchetype.title}
@@ -414,7 +415,7 @@ Total Estimated Pages: ${discovery.pageCount} Pages.
 ${discovery.selectedFeatures.map(fid => {
   const label = FEATURE_LABELS[fid];
   return `### ${label}
-- **Status:** Included in package scope.
+- **Status:** Included in package scope by Devibe Studio.
 - **Goal:** Tested and verified across mobile and desktop.`;
 }).join('\n\n')}
 
@@ -428,15 +429,16 @@ ${currentArchetype.wireframe.map((wf, idx) => `  ${idx + 1}. ${wf.name}`).join('
 
 ---
 
-## 4. Statutory Tax & Data Privacy Compliance
+## 4. Statutory Tax, Privacy & Managed Hosting Terms
 - **Tax Classification:** 18% GST Applicable under SAC Code 998314 (IT Design & Development Services).
-- **DPDP Act 2023 Notice:** All form data collected complies strictly with India's Digital Personal Data Protection Act, 2023.
-- **Domain Ownership Policy:** Client owns 100% of their domain. Service Provider provides purchase guidance only.
-- **Managed Hosting Policy:** Managed hosted service model. Codebase IP remains with Service Provider.`;
+- **DPDP Act 2023 Notice:** All data collected complies strictly with India's Digital Personal Data Protection Act, 2023.
+- **Domain Ownership Policy:** Client owns 100% of their domain. Devibe Studio provides purchase guidance only.
+- **Managed Hosting Policy:** Managed hosted service model on Devibe Studio edge servers. Codebase IP remains with Devibe Studio.`;
   }, [discovery, currentArchetype, activeDesignStyle, activePreset]);
 
   const trdContent = useMemo(() => {
     return `# TECHNICAL & SECURITY BLUEPRINT
+**Service Provider:** Devibe Studio (devibestudio.in)
 **Project:** ${discovery.clientName} Technical Overview
 **Technology Engine:** Next.js (App Router) / React 19 / TypeScript
 **Selected Visual Style:** ${activeDesignStyle.name}
@@ -447,7 +449,7 @@ ${currentArchetype.wireframe.map((wf, idx) => `  ${idx + 1}. ${wf.name}`).join('
 ## 1. Technology & Online Payments
 - **Website Engine:** Next.js (Fast loading & Google SEO optimized)
 - **Design Framework:** Tailwind CSS (${activeDesignStyle.name})
-- **Cloud Hosting:** Cloudflare CDN & Vercel Edge Server (Fully Managed Agency Infrastructure)
+- **Cloud Hosting:** Cloudflare CDN & Vercel Edge Server (Managed Devibe Studio Infrastructure)
 - **Database System:** Supabase Secure Database (PostgreSQL)
 - **Payment Gateway:** Dual Integration — Razorpay & Cashfree (UPI, Cards, NetBanking @ ₹9,000)
 
@@ -456,7 +458,7 @@ ${currentArchetype.wireframe.map((wf, idx) => `  ${idx + 1}. ${wf.name}`).join('
 ## 2. Page Structure & Security Checklist
 - [x] Secure SSL Certificate Encryption & DPDP Act 2023 Data Privacy Rules
 - [x] Google Mobile Speed & SEO Optimization
-- [x] Automatic Weekly Backup System
+- [x] Automatic Weekly Backup System on devibestudio.in infrastructure
 - [x] 18% GST Invoice & Input Tax Credit (ITC) Support`;
   }, [discovery, quoteCalculation, activeDesignStyle]);
 
@@ -468,7 +470,7 @@ ${currentArchetype.wireframe.map((wf, idx) => `  ${idx + 1}. ${wf.name}`).join('
     return `# OFFICIAL STATEMENT OF WORK & LEGAL AGREEMENT
 
 **Client / Business Name:** ${discovery.clientName}
-**Service Provider:** Web Development Agency
+**Service Provider:** Devibe Studio (devibestudio.in)
 **Effective Date:** ${new Date().toLocaleDateString('en-IN')}
 **Package Tier:** ${activePreset.name}
 **Website Work Price (Before Tax):** ₹${quoteCalculation.subtotal.toLocaleString('en-IN')} INR
@@ -480,7 +482,7 @@ ${quoteCalculation.savingsAmount > 0 ? `**Your Market Savings:** ₹${quoteCalcu
 ---
 
 ### 1. Scope of Deliverables
-The Service Provider agrees to design, build, test, and launch the custom website according to the following scope:
+Devibe Studio agrees to design, build, test, and launch the custom website according to the following scope:
 - Visual Theme: ${activeDesignStyle.name}
 - Layout Structure: ${currentArchetype.title}
 - Total Page Scope: ${discovery.pageCount} Pages
@@ -490,7 +492,7 @@ The Service Provider agrees to design, build, test, and launch the custom websit
 ---
 
 ### 2. Simple Payment Milestone Schedule (Includes 18% GST)
-Payment shall be rendered in three (3) clear installments upon GST Tax Invoice issuance:
+Payment shall be rendered in three (3) clear installments upon GST Tax Invoice issuance by Devibe Studio:
 1. **Stage 1 Initial Deposit (50%):** ₹${quoteCalculation.milestones.deposit.toLocaleString('en-IN')} INR (Due upon signing to start project)
 2. **Stage 2 Midpoint Approval (25%):** ₹${quoteCalculation.milestones.midpoint.toLocaleString('en-IN')} INR (Due upon design signoff)
 3. **Stage 3 Final Pre-Launch Balance (25%):** ₹${quoteCalculation.milestones.finalBalance.toLocaleString('en-IN')} INR (Exact remaining balance prior to DNS launch)
@@ -499,7 +501,7 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
 
 ### 3. Statutory GST Law Compliance & TDS Notice
 - All fees quoted under this official agreement are subject to 18% Goods & Services Tax (GST) as per the Goods & Services Tax Act, 2017 under SAC Code 998314 (*Information Technology Design & Development Services*), enabling 100% Input Tax Credit (ITC) claim.
-- **TDS Deduction:** Payments are subject to applicable TDS under Section 194C / 194J of the Income Tax Act. Form 16A TDS certificates must be issued quarterly.
+- **TDS Deduction:** Payments are subject to applicable TDS under Section 194C / 194J of the Income Tax Act. Form 16A TDS certificates must be issued quarterly to Devibe Studio.
 
 ---
 
@@ -510,20 +512,20 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
 ---
 
 ### 5. Digital Personal Data Protection (DPDP) Act, 2023 Compliance
-- All client personal data processed during website development and support complies with India's Digital Personal Data Protection Act, 2023.
+- All client personal data processed during website development and support by Devibe Studio complies with India's Digital Personal Data Protection Act, 2023.
 - Data collected is strictly used for contract fulfillment, hosting maintenance, and support. Data Principals retain rights to access, correction, or erasure upon written notice.
 
 ---
 
 ### 6. Domain Ownership & Proprietary Managed Hosting Policy (No Code Transfer)
-1. **Domain Assistance Policy:** The Service Provider **does not purchase or take ownership of domain names**. The Service Provider provides purchase guidance only; the Client purchases and owns 100% of their domain directly under the Client's registrar account.
-2. **Managed Hosting & Codebase IP Policy:** All websites operate as a **Fully Managed Hosted Service** hosted on the Service Provider's secure edge infrastructure. The underlying Next.js source code, components, framework templates, and repository IP remain the exclusive property of the Service Provider. Source code transfer is explicitly excluded. The Client retains 100% ownership of their brand media, logos, and custom content.
+1. **Domain Assistance Policy:** Devibe Studio **does not purchase or take ownership of domain names**. Devibe Studio provides purchase guidance only; the Client purchases and owns 100% of their domain directly under the Client's registrar account.
+2. **Managed Hosting & Codebase IP Policy:** All websites operate as a **Fully Managed Hosted Service** hosted on Devibe Studio's secure edge infrastructure (devibestudio.in). The underlying Next.js source code, components, framework templates, and repository IP remain the exclusive property of Devibe Studio. Source code transfer is explicitly excluded. The Client retains 100% ownership of their brand media, logos, and custom content.
 
 ---
 
 ### 7. Signatures & GSTIN Details
 
-**For Service Provider:** ________________________ &nbsp;&nbsp;&nbsp;&nbsp; **Date:** ____________
+**For Devibe Studio (devibestudio.in):** ________________________ &nbsp;&nbsp;&nbsp;&nbsp; **Date:** ____________
 **GSTIN:** 27AAAAA0000A1Z5
 
 **For Client (${discovery.clientName}):** ________________________ &nbsp;&nbsp;&nbsp;&nbsp; **Date:** ____________
@@ -544,7 +546,7 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
         <header className="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-6 gap-4">
           <div>
             <div className="flex items-center gap-2 text-teal-600 dark:text-slate-300 text-sm font-semibold tracking-wide uppercase">
-              <Sparkles className="w-4 h-4" /> Enterprise Customer Quote & Agreement Engine
+              <Sparkles className="w-4 h-4" /> Devibe Studio (devibestudio.in) — Website Planner Engine
             </div>
             <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-1">
               Website Discovery & Pricing Suite
@@ -572,7 +574,7 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
               <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-4">
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <Search className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Ponytale & Google Audit & Gap Analysis Report
+                    <Search className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Ponytale & Google Audit & Gap Analysis Report (Devibe Studio)
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                     System verification report comparing Ponytale audit findings against Google benchmarks.
@@ -664,7 +666,7 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
                 <Compass className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Step 1: Tell Us About Your Business & Goals
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                Fill in your business details below to generate an instant clear website quote in Indian Rupees (₹ INR).
+                Fill in your business details below to generate an instant clear website quote by Devibe Studio (devibestudio.in).
               </p>
             </div>
 
@@ -690,7 +692,7 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
                 <Server className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold block text-slate-900 dark:text-white">Fully Managed Hosting</span>
-                  <span className="text-[11px] text-slate-600 dark:text-slate-400">We host & maintain your site on edge cloud. Codebase IP remains with agency.</span>
+                  <span className="text-[11px] text-slate-600 dark:text-slate-400">We host & maintain your site on devibestudio.in edge cloud. Codebase IP stays with agency.</span>
                 </div>
               </div>
             </div>
@@ -1222,7 +1224,7 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
                   <FileText className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Step 4: Your Official Quotation, Tech Summary & Legal Contract
                 </h2>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                  Copy or download your complete project specs and ready-to-sign official GST legal agreement.
+                  Copy or download your complete project specs and ready-to-sign official GST legal agreement by Devibe Studio (devibestudio.in).
                 </p>
               </div>
 
