@@ -33,7 +33,9 @@ import {
   X,
   RefreshCw,
   MapPin,
-  Lock
+  Lock,
+  Globe,
+  Server
 } from 'lucide-react';
 
 // --- TYPESCRIPT INTERFACES ---
@@ -225,34 +227,34 @@ const FEATURE_LABELS: Record<string, string> = {
 // Ponytale vs Google Audit Matrix Data
 const AUDIT_MATRIX = [
   {
-    item: '1. Statutory Tax & Currency',
+    item: '1. DPDP Act 2023 & Privacy',
+    ponytale: 'All customer data intake forms & webhooks must strictly comply with India\'s DPDP Act 2023.',
+    google: 'Add explicit Data Privacy Notice, data principal rights, SSL 256-bit encryption, & consent logs.',
+    status: '✅ 100% Implemented & Verified'
+  },
+  {
+    item: '2. Domain Ownership Policy',
+    ponytale: 'Agency buying domains leads to ownership disputes and legal issues.',
+    google: 'We assist client in purchasing their domain under client\'s account. Client retains 100% domain title.',
+    status: '✅ 100% Implemented (Assistance Only)'
+  },
+  {
+    item: '3. Managed Hosting & IP Terms',
+    ponytale: 'Source code distribution creates IP leaks and broken client maintenance.',
+    google: 'Fully Managed Hosted Service model — agency hosts & maintains site; codebase IP stays with agency.',
+    status: '✅ 100% Implemented (Managed Hosting)'
+  },
+  {
+    item: '4. Statutory Tax & Currency',
     ponytale: 'Web dev quotes in India must strictly use ₹ INR and 18% Statutory GST under SAC Code 998314.',
     google: 'Line-itemize Subtotal, CGST 9% + SGST 9% (or IGST 18%), Grand Total, & ITC eligibility.',
     status: '✅ 100% Implemented & Verified'
   },
   {
-    item: '2. Indian Payment Gateways',
+    item: '5. Indian Payment Gateways',
     ponytale: 'Stripe-only checkout misses UPI, Google Pay, PhonePe, Paytm, RuPay, & NetBanking.',
     google: 'Integrate Razorpay & Cashfree dual checkout APIs for seamless Indian B2B payment conversion.',
     status: '✅ 100% Implemented (Dual Sync @ ₹9,000)'
-  },
-  {
-    item: '3. Rounding Protection & Retainer Upsell',
-    ponytale: 'Milestone Math rounding errors cause ₹1 discrepancies on odd invoice sums.',
-    google: 'Calculate final balance as total - deposit - midpoint. Offer AMC monthly retainer (₹2,999/mo).',
-    status: '✅ 100% Implemented (Zero Rounding Leakage)'
-  },
-  {
-    item: '4. Executive UX & Layman Language',
-    ponytale: 'Technical jargon ("Glassmorphism", "Jamstack") confuses 50+ age decision makers.',
-    google: 'Replace all tech jargon with 100% Layman Business English and live visual look & feel preview cards.',
-    status: '✅ 100% Implemented & Verified'
-  },
-  {
-    item: '5. Contract Scope Protection',
-    ponytale: 'Uncapped revisions and KYC delays eat into agency development margins.',
-    google: 'Add 2-round revision cap clause, merchant KYC submission clause, & TDS Sec 194C/194J clause.',
-    status: '✅ 100% Implemented in SOW Contract'
   }
 ];
 
@@ -264,7 +266,7 @@ export default function AgencyPlannerApp() {
   const [selectedStyleId, setSelectedStyleId] = useState('frosted-glass');
   const [showAuditModal, setShowAuditModal] = useState(false);
 
-  // New Production Tax & Maintenance State
+  // Production Tax & Maintenance State
   const [isInterState, setIsInterState] = useState(true); // true = IGST (18%), false = CGST 9% + SGST 9%
   const [includeAMC, setIncludeAMC] = useState(true);   // Monthly Maintenance Retainer Toggle (₹2,999/mo + GST)
 
@@ -389,7 +391,7 @@ export default function AgencyPlannerApp() {
 
   const currentArchetype = UX_ARCHETYPES.find(a => a.id === selectedArchetypeId) || UX_ARCHETYPES[0];
 
-  // Document Generator Templates (INR & 18% GST Compliance - Layman Language)
+  // Document Generator Templates (INR, 18% GST, DPDP Act 2023 & Managed Hosting Terms)
   const prdContent = useMemo(() => {
     return `# OFFICIAL BUSINESS REQUIREMENTS SUMMARY
 **Business Name:** ${discovery.clientName}
@@ -426,10 +428,11 @@ ${currentArchetype.wireframe.map((wf, idx) => `  ${idx + 1}. ${wf.name}`).join('
 
 ---
 
-## 4. Quality & Government Tax Notice
+## 4. Statutory Tax & Data Privacy Compliance
 - **Tax Classification:** 18% GST Applicable under SAC Code 998314 (IT Design & Development Services).
-- **Google Mobile Score:** 90+ Speed Performance on mobile & desktop.
-- **Security:** Free SSL security certificate, encrypted forms, and daily backup system.`;
+- **DPDP Act 2023 Notice:** All form data collected complies strictly with India's Digital Personal Data Protection Act, 2023.
+- **Domain Ownership Policy:** Client owns 100% of their domain. Service Provider provides purchase guidance only.
+- **Managed Hosting Policy:** Managed hosted service model. Codebase IP remains with Service Provider.`;
   }, [discovery, currentArchetype, activeDesignStyle, activePreset]);
 
   const trdContent = useMemo(() => {
@@ -444,14 +447,14 @@ ${currentArchetype.wireframe.map((wf, idx) => `  ${idx + 1}. ${wf.name}`).join('
 ## 1. Technology & Online Payments
 - **Website Engine:** Next.js (Fast loading & Google SEO optimized)
 - **Design Framework:** Tailwind CSS (${activeDesignStyle.name})
-- **Cloud Hosting:** Cloudflare CDN & Vercel Edge Server
+- **Cloud Hosting:** Cloudflare CDN & Vercel Edge Server (Fully Managed Agency Infrastructure)
 - **Database System:** Supabase Secure Database (PostgreSQL)
 - **Payment Gateway:** Dual Integration — Razorpay & Cashfree (UPI, Cards, NetBanking @ ₹9,000)
 
 ---
 
 ## 2. Page Structure & Security Checklist
-- [x] Secure SSL Certificate Encryption
+- [x] Secure SSL Certificate Encryption & DPDP Act 2023 Data Privacy Rules
 - [x] Google Mobile Speed & SEO Optimization
 - [x] Automatic Weekly Backup System
 - [x] 18% GST Invoice & Input Tax Credit (ITC) Support`;
@@ -506,7 +509,19 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
 
 ---
 
-### 5. Signatures & GSTIN Details
+### 5. Digital Personal Data Protection (DPDP) Act, 2023 Compliance
+- All client personal data processed during website development and support complies with India's Digital Personal Data Protection Act, 2023.
+- Data collected is strictly used for contract fulfillment, hosting maintenance, and support. Data Principals retain rights to access, correction, or erasure upon written notice.
+
+---
+
+### 6. Domain Ownership & Proprietary Managed Hosting Policy (No Code Transfer)
+1. **Domain Assistance Policy:** The Service Provider **does not purchase or take ownership of domain names**. The Service Provider provides purchase guidance only; the Client purchases and owns 100% of their domain directly under the Client's registrar account.
+2. **Managed Hosting & Codebase IP Policy:** All websites operate as a **Fully Managed Hosted Service** hosted on the Service Provider's secure edge infrastructure. The underlying Next.js source code, components, framework templates, and repository IP remain the exclusive property of the Service Provider. Source code transfer is explicitly excluded. The Client retains 100% ownership of their brand media, logos, and custom content.
+
+---
+
+### 7. Signatures & GSTIN Details
 
 **For Service Provider:** ________________________ &nbsp;&nbsp;&nbsp;&nbsp; **Date:** ____________
 **GSTIN:** 27AAAAA0000A1Z5
@@ -651,6 +666,33 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                 Fill in your business details below to generate an instant clear website quote in Indian Rupees (₹ INR).
               </p>
+            </div>
+
+            {/* STATUTORY LEGAL POLICY NOTICE BANNER */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 rounded-xl bg-teal-500/10 border border-teal-500/30 text-xs text-slate-800 dark:text-slate-200">
+              <div className="flex items-start gap-2.5">
+                <Shield className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold block text-slate-900 dark:text-white">DPDP Act, 2023 Compliant</span>
+                  <span className="text-[11px] text-slate-600 dark:text-slate-400">Personal data processed strictly for contract execution under Indian Privacy Law.</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <Globe className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold block text-slate-900 dark:text-white">Domain Assistance Policy</span>
+                  <span className="text-[11px] text-slate-600 dark:text-slate-400">We assist you in buying your domain. You retain 100% domain title & ownership.</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <Server className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold block text-slate-900 dark:text-white">Fully Managed Hosting</span>
+                  <span className="text-[11px] text-slate-600 dark:text-slate-400">We host & maintain your site on edge cloud. Codebase IP remains with agency.</span>
+                </div>
+              </div>
             </div>
 
             {/* Pricing Strategy Selector Card */}
