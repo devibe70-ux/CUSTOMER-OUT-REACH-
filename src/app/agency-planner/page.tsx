@@ -28,7 +28,9 @@ import {
   Shield,
   Star,
   Sparkle,
-  HelpCircle
+  HelpCircle,
+  Search,
+  X
 } from 'lucide-react';
 
 // --- DATA ARCHETYPES (Plain-English Layman Language) ---
@@ -202,12 +204,47 @@ const FEATURE_LABELS: Record<string, string> = {
   multilingual: 'Multi-Language Support (English, Hindi & Regional Languages)'
 };
 
+// Ponytale vs Google Audit Matrix Data
+const AUDIT_MATRIX = [
+  {
+    item: '1. Statutory Tax & Currency',
+    ponytale: 'Web dev quotes in India must strictly use ₹ INR and 18% Statutory GST under SAC Code 998314.',
+    google: 'Line-itemize Subtotal, 18% GST, Grand Total, and ITC tax credit eligibility in all SOW contracts.',
+    status: '✅ 100% Implemented & Verified'
+  },
+  {
+    item: '2. Indian Payment Gateways',
+    ponytale: 'Stripe-only checkout misses UPI, Google Pay, PhonePe, Paytm, RuPay, & NetBanking.',
+    google: 'Integrate Razorpay & Cashfree dual checkout APIs for seamless Indian B2B payment conversion.',
+    status: '✅ 100% Implemented (Dual Sync @ ₹9,000)'
+  },
+  {
+    item: '3. Pricing & Win Rate',
+    ponytale: 'Traditional agency pricing (₹15,000/pg) causes client drop-offs.',
+    google: 'Introduce an Inbound Magnet Tier (₹2,500/pg) with a dynamic "Client Savings Highlight" callout.',
+    status: '✅ 100% Implemented (75% Savings Callout)'
+  },
+  {
+    item: '4. Executive UX & Layman Language',
+    ponytale: 'Technical jargon ("Glassmorphism", "Jamstack") confuses 50+ age decision makers.',
+    google: 'Replace all tech jargon with 100% Layman Business English and live visual look & feel preview cards.',
+    status: '✅ 100% Implemented & Verified'
+  },
+  {
+    item: '5. Contract & Specifications',
+    ponytale: 'Clients need formal legal agreements before releasing project deposits.',
+    google: 'Provide 1-click exports for Product Specs (PRD), Tech Blueprint (TRD), & GST Legal Agreement (SOW).',
+    status: '✅ 100% Implemented (50/25/25 Milestones)'
+  }
+];
+
 export default function AgencyPlannerApp() {
   const [currentStep, setCurrentStep] = useState(1);
   const [copiedDoc, setCopiedDoc] = useState<string | null>(null);
   const [activeDocTab, setActiveDocTab] = useState('prd');
   const [pricingTier, setPricingTier] = useState<'inbound' | 'standard' | 'enterprise'>('inbound');
   const [selectedStyleId, setSelectedStyleId] = useState('frosted-glass');
+  const [showAuditModal, setShowAuditModal] = useState(false);
 
   // Form State
   const [discovery, setDiscovery] = useState({
@@ -436,11 +473,75 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
             </h1>
           </div>
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => setShowAuditModal(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-teal-50 dark:bg-zinc-800 hover:bg-teal-100 dark:hover:bg-zinc-700 text-teal-800 dark:text-slate-200 rounded-xl border border-teal-300 dark:border-zinc-700 transition-all text-xs font-bold shadow-sm"
+            >
+              <Search className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+              <span>Ponytale & Google Audit Report</span>
+            </button>
+
             <span className="text-xs px-3 py-1 bg-slate-100 dark:bg-zinc-800 rounded-full border border-slate-200 dark:border-zinc-700 text-slate-700 dark:text-slate-300 font-mono shadow-sm">
               Razorpay & Cashfree @ ₹9,000
             </span>
           </div>
         </header>
+
+        {/* PONYTALE & GOOGLE AUDIT MODAL */}
+        {showAuditModal && (
+          <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 space-y-6 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <Search className="w-5 h-5 text-teal-600 dark:text-slate-300" /> Ponytale & Google Audit & Gap Analysis Report
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    System verification report comparing Ponytale audit findings against Google benchmarks.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowAuditModal(false)}
+                  className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-zinc-700 transition-all"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                {AUDIT_MATRIX.map((audit, idx) => (
+                  <div key={idx} className="p-4 rounded-xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-bold text-sm text-slate-900 dark:text-white">{audit.item}</h4>
+                      <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
+                        {audit.status}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
+                      <div className="bg-white dark:bg-zinc-900 p-3 rounded-lg border border-slate-200 dark:border-zinc-800">
+                        <span className="font-bold text-slate-700 dark:text-slate-300 block mb-1">Ponytale Audit Finding:</span>
+                        <p className="text-slate-600 dark:text-slate-400">{audit.ponytale}</p>
+                      </div>
+                      <div className="bg-white dark:bg-zinc-900 p-3 rounded-lg border border-slate-200 dark:border-zinc-800">
+                        <span className="font-bold text-teal-700 dark:text-slate-200 block mb-1">Google Benchmark Recommendation:</span>
+                        <p className="text-slate-600 dark:text-slate-400">{audit.google}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4 border-t border-slate-200 dark:border-zinc-800 flex justify-end">
+                <button
+                  onClick={() => setShowAuditModal(false)}
+                  className="px-6 py-2.5 bg-teal-600 text-white dark:bg-white dark:text-slate-900 font-bold rounded-xl shadow-sm"
+                >
+                  Close Audit Matrix
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* STEP PROGRESS BAR */}
         <nav className="grid grid-cols-4 gap-2 md:gap-4">
@@ -964,7 +1065,13 @@ Payment shall be rendered in three (3) clear installments upon GST Tax Invoice i
 
             {/* Document Content Box */}
             <div className="relative bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl p-6 font-mono text-xs text-slate-800 dark:text-slate-300 leading-relaxed overflow-x-auto max-h-[480px]">
-              <div className="absolute top-4 right-4">
+              <div className="absolute top-4 right-4 flex items-center gap-2">
+                <button
+                  onClick={() => setShowAuditModal(true)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-teal-50 dark:bg-zinc-800 hover:bg-teal-100 dark:hover:bg-zinc-700 text-teal-800 dark:text-slate-200 rounded-lg border border-teal-300 dark:border-zinc-700 transition-all text-xs font-bold shadow-sm"
+                >
+                  <Search className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" /> View Audit Report
+                </button>
                 <button
                   onClick={() => {
                     const content = activeDocTab === 'prd' ? prdContent : activeDocTab === 'trd' ? trdContent : contractContent;

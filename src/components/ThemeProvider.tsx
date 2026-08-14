@@ -13,18 +13,21 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('system');
+  const [theme, setThemeState] = useState<Theme>('system');
   const [activeTheme, setActiveTheme] = useState<'light' | 'dark'>('dark');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Read saved theme preference
-    const savedTheme = localStorage.getItem('agency_theme') as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
+    setMounted(true);
+    const saved = localStorage.getItem('agency_theme') as Theme | null;
+    if (saved && ['light', 'dark', 'system'].includes(saved)) {
+      setThemeState(saved);
     }
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
+
     const root = document.documentElement;
 
     const applyTheme = (mode: 'light' | 'dark') => {
@@ -55,7 +58,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
 
     localStorage.setItem('agency_theme', theme);
-  }, [theme]);
+  }, [theme, mounted]);
+
+  const setTheme = (newTheme: Theme) => {
+    setThemeState(newTheme);
+  };
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, activeTheme }}>
